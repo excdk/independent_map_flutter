@@ -1,14 +1,15 @@
 import 'package:flutter/widgets.dart';
 import 'package:independent_map/independent_map.dart';
+import 'package:independent_map/src/interfaces/map_state_notifier.dart';
 
-import '../map_objects/marker.dart';
+import '../map_objects/one_point_geo_object.dart';
 
-abstract class IndependentMapAbstract {
+abstract class IndependentMapAbstract implements MapStateNotifier {
   MapController getMapController();
 
-  void addMarkers(List<Marker> markers);
+  void addOnePointGeoObjects(List<OnePointGeoObect> markers);
 
-  void removeMarkers(List<Marker> markers);
+  void removeOnePointGeoObjects(List<OnePointGeoObect> markers);
 
   List<Widget> getMarkerWidgets();
 

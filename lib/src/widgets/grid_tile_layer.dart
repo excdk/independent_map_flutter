@@ -60,8 +60,8 @@ class _GridTileLayerState extends State<GridTileLayer> {
             _mapController
                 .getZoom()); // по сути это количество тайлов по ширине
 
-        final norm =
-            projection.toTileIndex(_mapController.getMapCenter()); // от 0 до 1
+        final norm = projection
+            .geoPointToTileIndex(_mapController.getMapCenter()); // от 0 до 1
         final ttl =
             TileIndex(norm.x * _tileSize * scale, norm.y * _tileSize * scale);
 

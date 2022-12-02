@@ -5,13 +5,12 @@ import 'package:independent_map/src/interfaces/dragger.dart';
 import 'package:independent_map/src/interfaces/independent_map_abstract.dart';
 import 'package:independent_map/src/interfaces/map_state_notifier.dart';
 import 'package:independent_map/src/interfaces/map_state_subscriber.dart';
-import 'package:independent_map/src/map_objects/marker.dart';
+import 'package:independent_map/src/map_objects/one_point_geo_object.dart';
 import 'package:independent_map/src/interfaces/map_controller.dart';
 
 import '../data_objects/tile_index.dart';
 
-class IndependentMap extends IndependentMapAbstract
-    implements MapStateNotifier {
+class IndependentMap extends IndependentMapAbstract {
   final MapController _mapController;
   final Dragger _dragger;
   final List<MapStateSubscriber> _subscribers = [];
@@ -26,12 +25,12 @@ class IndependentMap extends IndependentMapAbstract
   }
 
   @override
-  void addMarkers(List<Marker> markers) {
+  void addOnePointGeoObjects(List<OnePointGeoObect> markers) {
     // TODO: implement addMarkers
   }
 
   @override
-  void removeMarkers(List<Marker> markers) {
+  void removeOnePointGeoObjects(List<OnePointGeoObect> markers) {
     // TODO: implement removeMarkers
   }
 

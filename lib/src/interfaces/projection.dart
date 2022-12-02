@@ -1,7 +1,13 @@
+import 'dart:ui';
+
 import 'package:independent_map/independent_map.dart';
 
 abstract class Projection {
-  GeoPoint toGeoPoint(TileIndex tileIndex);
+  GeoPoint offsetToGeoPoint(Offset offset);
 
-  TileIndex toTileIndex(GeoPoint geoPoint);
+  Offset geoPointToOffset(GeoPoint geoPoint);
+
+  GeoPoint tileIndexToGeoPoint(TileIndex tileIndex);
+
+  TileIndex geoPointToTileIndex(GeoPoint geoPoint);
 }

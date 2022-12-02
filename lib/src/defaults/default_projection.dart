@@ -1,10 +1,11 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:independent_map/independent_map.dart';
 
 class DefaultProjection extends Projection {
   @override
-  GeoPoint toGeoPoint(TileIndex tileIndex) {
+  GeoPoint tileIndexToGeoPoint(TileIndex tileIndex) {
     final x = tileIndex.x;
     final y = tileIndex.y;
 
@@ -18,7 +19,7 @@ class DefaultProjection extends Projection {
   }
 
   @override
-  TileIndex toTileIndex(GeoPoint geoPoint) {
+  TileIndex geoPointToTileIndex(GeoPoint geoPoint) {
 // // get x value
     final lng = geoPoint.longitude;
     final lat = geoPoint.latitude;
@@ -33,5 +34,17 @@ class DefaultProjection extends Projection {
     double y = (1 / 2) - (1 * mercN / (2 * pi));
 
     return TileIndex(x, y);
+  }
+
+  @override
+  Offset geoPointToOffset(GeoPoint geoPoint) {
+    // TODO: implement geoPointToOffset
+    throw UnimplementedError();
+  }
+
+  @override
+  GeoPoint offsetToGeoPoint(Offset offset) {
+    // TODO: implement offsetToGeoPoint
+    throw UnimplementedError();
   }
 }

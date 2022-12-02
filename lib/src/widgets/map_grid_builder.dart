@@ -6,14 +6,13 @@ class MapGridBuilder extends InheritedWidget {
       {required this.mapController, required this.builder, super.key})
       : super(child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
-          return builder.call(context, mapController);
+          return builder.call(context);
         }));
 
   final MapController mapController;
 
   final Widget Function(
     BuildContext context,
-    MapController transformer,
   ) builder;
 
   @override

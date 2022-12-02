@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:independent_map/independent_map.dart';
 
 class DefaultMapController extends MapController {
@@ -33,7 +31,7 @@ class DefaultMapController extends MapController {
   }
 
   @override
-  void setZoom(double zoom) {
+  void changeZoomBy(double zoom) {
     final zoomValueCurrent = _zoom;
     if (true) {
       var zoomValueChanged = zoomValueCurrent + zoom;
@@ -50,22 +48,5 @@ class DefaultMapController extends MapController {
   @override
   int getTileSize() {
     return tileSize;
-  }
-
-  @override
-  void setTileSize(int size) {
-    tileSize = size;
-  }
-
-  @override
-  GeoPoint toGeoPoint(Offset offset) {
-    // TODO: implement toGeoPoint
-    throw UnimplementedError();
-  }
-
-  @override
-  Offset toOffset(GeoPoint geoPoint) {
-    // TODO: implement toOffset
-    throw UnimplementedError();
   }
 }

@@ -17,13 +17,15 @@ class DefaultDragger extends Dragger {
   void drag(double dx, double dy) {
     var scale = pow(2.0, _mapController.getZoom());
     final centerLocation = _mapController.getMapCenter();
-    final norm = _mapController.getProjection().toTileIndex(centerLocation);
+    final norm =
+        _mapController.getProjection().geoPointToTileIndex(centerLocation);
 
     final x = norm.x - (dx / _mapController.getTileSize()) / scale;
     final y = norm.y - (dy / _mapController.getTileSize()) / scale;
 
     final mon = TileIndex(x, y);
-    _mapController.setMapCenter(_mapController.getProjection().toGeoPoint(mon));
+    _mapController
+        .setMapCenter(_mapController.getProjection().tileIndexToGeoPoint(mon));
   }
 
   @override
@@ -44,10 +46,10 @@ class DefaultDragger extends Dragger {
     _scaleStart = details.scale;
 
     if (scaleDiff > 0) {
-      _mapController.setZoom(0.02);
+      _mapController.changeZoomBy(0.02);
       _callback?.call();
     } else if (scaleDiff < 0) {
-      _mapController.setZoom(-0.02);
+      _mapController.changeZoomBy(-0.02);
       _callback?.call();
     } else {
       final now = details.focalPoint;
