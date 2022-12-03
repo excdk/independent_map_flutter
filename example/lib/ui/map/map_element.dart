@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/widgets.dart';
 import 'package:independent_map/independent_map.dart';
 
-late IndependentMap independentMap;
+late IndependentMapAbstract independentMap;
 
 class MapElement extends StatefulWidget {
   const MapElement({super.key});

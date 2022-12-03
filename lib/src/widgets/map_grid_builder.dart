@@ -13,7 +13,7 @@ class MapGridBuilder extends InheritedWidget {
           return builder.call(context);
         }));
 
-  final IndependentMap independentMap;
+  final IndependentMapAbstract independentMap;
 
   final Widget Function(
     BuildContext context,

@@ -16,7 +16,7 @@ class GridTileLayer extends StatefulWidget {
 
 class _GridTileLayerState extends State<GridTileLayer> {
   late int _tileSize;
-  late IndependentMap _independentMap;
+  late IndependentMapAbstract _independentMap;
 
   @override
   void didChangeDependencies() {
