@@ -7,6 +7,8 @@ import '../map_objects/one_point_geo_object.dart';
 abstract class IndependentMapAbstract implements MapStateNotifier {
   MapController getMapController();
 
+  Projection getProjection();
+
   void addOnePointGeoObjects(List<OnePointGeoObect> markers);
 
   void removeOnePointGeoObjects(List<OnePointGeoObect> markers);

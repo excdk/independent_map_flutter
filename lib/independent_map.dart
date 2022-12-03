@@ -20,3 +20,4 @@ export 'src/defaults/default_projection.dart';
 export 'src/defaults/independent_map.dart';
 export 'src/defaults/map_objects/default_marker.dart';
 export 'src/defaults/default_dragger.dart';
+export 'src/defaults/indepent_map_factory.dart';

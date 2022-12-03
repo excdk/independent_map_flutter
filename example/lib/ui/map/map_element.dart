@@ -16,18 +16,15 @@ class MapElement extends StatefulWidget {
 class _MapElementState extends State<MapElement> implements MapStateSubscriber {
   @override
   void notify() {
-    log('notified');
     setState(() {});
   }
 
   @override
   void initState() {
-    var mapController = DefaultMapController(
-        const GeoPoint(latitude: 55.751667, longitude: 37.617778),
-        1,
-        DefaultProjection());
-    independentMap =
-        IndependentMap(mapController, DefaultDragger(mapController));
+    independentMap = IndependentMapFactory.buildDefault(
+        centerLocation:
+            const GeoPoint(latitude: 55.751667, longitude: 37.617778),
+        initialZoom: 15);
     independentMap.subscribe(this);
     super.initState();
   }
@@ -35,7 +32,7 @@ class _MapElementState extends State<MapElement> implements MapStateSubscriber {
   @override
   Widget build(BuildContext context) {
     return MapGridBuilder(
-        mapController: independentMap.getMapController(),
+        independentMap: independentMap,
         builder: ((context) {
           return GestureDetector(
             onScaleStart: independentMap.getDragger().onScaleStart,
@@ -43,11 +40,10 @@ class _MapElementState extends State<MapElement> implements MapStateSubscriber {
             onScaleEnd: independentMap.getDragger().onScaleStop,
             child: GridTileLayer(
               builder: ((context, layerCoordsData) {
-                print(
-                    "${layerCoordsData.x}, ${layerCoordsData.y}, ${layerCoordsData.z}");
+                log("${layerCoordsData.x}, ${layerCoordsData.y}, ${layerCoordsData.z}");
                 return CachedNetworkImage(
                   imageUrl:
-                      "https://www.google.com/maps/vt/pb=!1m4!1m3!1i${layerCoordsData.z}!2i${layerCoordsData.x}!3i${layerCoordsData.y}!2m3!1e0!2sm!3i420120488!3m7!2sen!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0!5m1!1e0!23i4111425",
+                      "http://a.tile.openstreetmap.fr/hot/${layerCoordsData.z}/${layerCoordsData.x}/${layerCoordsData.y}.png",
                   fit: BoxFit.cover,
                 );
               }),

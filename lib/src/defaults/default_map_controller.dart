@@ -1,13 +1,12 @@
 import 'package:independent_map/independent_map.dart';
 
 class DefaultMapController extends MapController {
-  DefaultMapController(this._centerLocation, this._zoom, this._projection,
+  DefaultMapController(this._centerLocation, this._zoom,
       {this.maxZoom = 16, this.minZoom = 0, this.tileSize = 256});
 
   GeoPoint _centerLocation;
-  final Projection _projection;
   double _zoom;
-  int tileSize;
+  final int tileSize;
   final double maxZoom;
   final double minZoom;
   @override
@@ -18,11 +17,6 @@ class DefaultMapController extends MapController {
   @override
   void setMapCenter(GeoPoint geoPoint) {
     _centerLocation = geoPoint;
-  }
-
-  @override
-  Projection getProjection() {
-    return _projection;
   }
 
   @override

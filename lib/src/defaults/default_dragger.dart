@@ -4,9 +4,11 @@ import 'package:independent_map/independent_map.dart';
 
 class DefaultDragger extends Dragger {
   final MapController _mapController;
+  final Projection _projection;
   Function()? _callback;
   DefaultDragger(
     this._mapController,
+    this._projection,
   );
 
   bool _isDraggingNow = false;
@@ -17,15 +19,13 @@ class DefaultDragger extends Dragger {
   void drag(double dx, double dy) {
     var scale = pow(2.0, _mapController.getZoom());
     final centerLocation = _mapController.getMapCenter();
-    final norm =
-        _mapController.getProjection().geoPointToTileIndex(centerLocation);
+    final norm = _projection.geoPointToTileIndex(centerLocation);
 
     final x = norm.x - (dx / _mapController.getTileSize()) / scale;
     final y = norm.y - (dy / _mapController.getTileSize()) / scale;
 
     final mon = TileIndex(x, y);
-    _mapController
-        .setMapCenter(_mapController.getProjection().tileIndexToGeoPoint(mon));
+    _mapController.setMapCenter(_projection.tileIndexToGeoPoint(mon));
   }
 
   @override

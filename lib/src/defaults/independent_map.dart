@@ -5,6 +5,7 @@ import 'package:independent_map/src/interfaces/dragger.dart';
 import 'package:independent_map/src/interfaces/independent_map_abstract.dart';
 import 'package:independent_map/src/interfaces/map_state_notifier.dart';
 import 'package:independent_map/src/interfaces/map_state_subscriber.dart';
+import 'package:independent_map/src/interfaces/projection.dart';
 import 'package:independent_map/src/map_objects/one_point_geo_object.dart';
 import 'package:independent_map/src/interfaces/map_controller.dart';
 
@@ -12,10 +13,11 @@ import '../data_objects/tile_index.dart';
 
 class IndependentMap extends IndependentMapAbstract {
   final MapController _mapController;
+  final Projection _projection;
   final Dragger _dragger;
   final List<MapStateSubscriber> _subscribers = [];
 
-  IndependentMap(this._mapController, this._dragger) {
+  IndependentMap(this._mapController, this._projection, this._dragger) {
     _dragger.onEventCallbackRegister(notifySubscribers);
   }
 
@@ -60,5 +62,10 @@ class IndependentMap extends IndependentMapAbstract {
   @override
   Dragger getDragger() {
     return _dragger;
+  }
+
+  @override
+  Projection getProjection() {
+    return _projection;
   }
 }
