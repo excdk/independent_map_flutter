@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:independent_map/independent_map.dart';
-import 'package:independent_map/src/interfaces/map_state_notifier.dart';
 
 import '../map_objects/one_point_geo_object.dart';
 
@@ -9,11 +8,11 @@ abstract class IndependentMapAbstract implements MapStateNotifier {
 
   Projection getProjection();
 
-  void addOnePointGeoObjects(List<OnePointGeoObect> markers);
+  void addOnePointGeoObjects(List<OnePointGeoObject> geoObjects);
 
-  void removeOnePointGeoObjects(List<OnePointGeoObect> markers);
+  void removeOnePointGeoObjects(List<OnePointGeoObject> geoObjects);
 
-  List<Widget> getMarkerWidgets();
+  List<Widget> getOnePointGeoObjectsWidgets();
 
   Dragger getDragger();
 }
