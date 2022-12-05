@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:independent_map/independent_map.dart';
 
 class IndependentMapFactory {

@@ -54,10 +54,10 @@ class _GridTileLayerState extends State<GridTileLayer> {
                 .getMapController()
                 .getZoom()); // по сути это количество тайлов по ширине
 
-        final norm = projection.geoPointToTileIndex(
+        final norm = projection.geoPointToProjectionPoint(
             _independentMap.getMapController().getMapCenter()); // от 0 до 1
-        final ttl =
-            TileIndex(norm.x * _tileSize * scale, norm.y * _tileSize * scale);
+        final ttl = ProjectionPoint(
+            norm.x * _tileSize * scale, norm.y * _tileSize * scale);
 
         final fixedZoom =
             (_independentMap.getMapController().getZoom() + 0.0000001)
@@ -65,9 +65,9 @@ class _GridTileLayerState extends State<GridTileLayer> {
         final fixedPowZoom = pow(2,
             fixedZoom); // по сути это количество тайлов по ширине с фиксированным числом зума
 
-        final centerTileIndexX = (norm.x * fixedPowZoom)
+        final centerProjectionPointX = (norm.x * fixedPowZoom)
             .floor(); // координата тайла, находящегося на данной координате
-        final centerTileIndexY = (norm.y * fixedPowZoom)
+        final centerProjectionPointY = (norm.y * fixedPowZoom)
             .floor(); // координата тайла, находящегося на данной координате
 
         final scaleValue =
@@ -79,11 +79,11 @@ class _GridTileLayerState extends State<GridTileLayer> {
 
         final children = <Widget>[];
 
-        for (int i = centerTileIndexX - numTilesX;
-            i <= centerTileIndexX + numTilesX;
+        for (int i = centerProjectionPointX - numTilesX;
+            i <= centerProjectionPointX + numTilesX;
             i++) {
-          for (int j = centerTileIndexY - numTilesY;
-              j <= centerTileIndexY + numTilesY;
+          for (int j = centerProjectionPointY - numTilesY;
+              j <= centerProjectionPointY + numTilesY;
               j++) {
             final ox = (i * tileSizeScaled) + centerX - ttl.x;
             final oy = (j * tileSizeScaled) + centerY - ttl.y;

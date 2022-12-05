@@ -44,7 +44,7 @@ class _MapElementState extends State<MapElement> implements MapStateSubscriber {
                 onScaleEnd: independentMap.getDragger().onScaleStop,
                 child: GridTileLayer(
                   builder: ((context, layerCoordsData) {
-                    log("${layerCoordsData.x}, ${layerCoordsData.y}, ${layerCoordsData.z}");
+                    // log("${layerCoordsData.x}, ${layerCoordsData.y}, ${layerCoordsData.z}");
                     return CachedNetworkImage(
                       imageUrl:
                           "http://a.tile.openstreetmap.fr/hot/${layerCoordsData.z}/${layerCoordsData.x}/${layerCoordsData.y}.png",

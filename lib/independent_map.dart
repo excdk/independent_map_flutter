@@ -3,7 +3,7 @@ library independent_map;
 //data_objects
 export 'src/data_objects/geo_point.dart';
 export 'src/data_objects/layer_coords_data.dart';
-export 'src/data_objects/tile_index.dart';
+export 'src/data_objects/projection_point.dart';
 //interfaces
 export 'src/interfaces/map_controller.dart';
 export 'src/interfaces/projection.dart';
@@ -19,6 +19,7 @@ export 'src/exceptions/incorrect_data_exception.dart';
 export 'src/exceptions/independent_map_exception.dart';
 export 'src/exceptions/not_constrained_projection.dart';
 export 'src/exceptions/map_builder_exception.dart';
+export 'src/exceptions/zoom_out_of_bounds_exception.dart';
 //defaults
 export 'src/defaults/default_map_controller.dart';
 export 'src/defaults/default_projection.dart';

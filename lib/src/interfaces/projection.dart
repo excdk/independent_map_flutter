@@ -10,7 +10,7 @@ abstract class Projection {
 
   Offset geoPointToOffset(GeoPoint geoPoint);
 
-  GeoPoint tileIndexToGeoPoint(TileIndex tileIndex);
+  GeoPoint projectionPointToGeoPoint(ProjectionPoint projectionPoint);
 
-  TileIndex geoPointToTileIndex(GeoPoint geoPoint);
+  ProjectionPoint geoPointToProjectionPoint(GeoPoint geoPoint);
 }

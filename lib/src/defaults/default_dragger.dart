@@ -18,14 +18,15 @@ class DefaultDragger extends Dragger {
   @override
   void drag(double dx, double dy) {
     var scale = pow(2.0, _mapController.getZoom());
+
     final centerLocation = _mapController.getMapCenter();
-    final norm = _projection.geoPointToTileIndex(centerLocation);
+    final norm = _projection.geoPointToProjectionPoint(centerLocation);
 
     final x = norm.x - (dx / _mapController.getTileSize()) / scale;
     final y = norm.y - (dy / _mapController.getTileSize()) / scale;
 
-    final mon = TileIndex(x, y);
-    _mapController.setMapCenter(_projection.tileIndexToGeoPoint(mon));
+    final mon = ProjectionPoint(x, y);
+    _mapController.setMapCenter(_projection.projectionPointToGeoPoint(mon));
   }
 
   @override
